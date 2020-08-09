@@ -1,6 +1,6 @@
 # dotfiles
 my unix dotfiles
-containe :
-i3 config
-i3blocks config
-newsboat config and urls 
+contains :
+i3 config = /home/antoine/.config/config
+i3blocks config = /etc/i3blocks.conf
+newsboat config and urls = /home/antoine/.config/urls ou config
