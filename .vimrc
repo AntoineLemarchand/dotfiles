@@ -25,6 +25,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'vim-airline/vim-airline-themes'
 	Plug 'junegunn/goyo.vim'
 	Plug 'morhetz/gruvbox'
+	Plug 'dusans/vim-hardmode'
 call plug#end()
 
 " theme
@@ -35,24 +36,31 @@ colorscheme gruvbox
 " nobg
 hi Normal guibg=NONE ctermbg=NONE
 
-" disable arrow keys
-
-
 " mapping
 let mapleader = ' '
-nnoremap <leader>f :Goyo<CR>
+
+" tab management
 nnoremap <leader>n :tabnew .<CR>
 nnoremap <leader>l :tabn<CR>
+
+" split resize
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 nnoremap <Leader>v :e $MYVIMRC<CR>
-"" arrowz + esc
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
-imap <up> <nop>
-imap <down> <nop>
-imap <left> <nop>
-imap <right> <nop>
+
+" escape remap
 inoremap jk <esc>
+inoremap <esc> <Nop>
+
+" file nav
+noremap <leader>^ <C-^>
+
+" disable arrow keys
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+inoremap <Up> <Nop>
+inoremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
