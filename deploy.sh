@@ -1,6 +1,28 @@
-#!/bin/sh
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-git clone https://github.com/AntoineLemarchand/dotfiles /tmp
-mv tmp/dotfiles/.tmux.conf ~/
-mv tmp/dotfiles/.vimrc ~/
-echo "tmux + vim environment deployed, press <C-space>I inside tmux to finish install"
+#!/bin/bash
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+	https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim;
+if [[ ! -d ~/.tmux/plugins/tpm ]]
+then
+	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
+if [[ -f ~/.tmux.conf ]]
+then
+	mv ~/.tmux.conf ~/.tmux.conf.old
+fi
+if [[ -f ~/.vimrc ]]
+then
+	mv ~/.vimrc ~/.vimrc.old
+fi
+git clone https://github.com/AntoineLemarchand/dotfiles /tmp/AntoineLemarchandDotfiles
+cp /tmp/AntoineLemarchandDotfiles/.tmux.conf ~/
+cp /tmp/AntoineLemarchandDotfiles/.vimrc ~/
+echo "     ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄     "
+echo "▄█▀▀▀ tmux + vim environment deployed ▀▀▀█▄"
+echo "█     press <C-space> + I inside tmux     █"
+echo "█     and use ':PlugInstall' in vim to    █"
+echo "█     finish the installation             █"
+echo "█                                         █"
+echo "█                                         █"
+echo "█      Thanks for using this script       █"
+echo "▀█▄▄▄                                 ▄▄▄█▀"
+echo "     ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀     "
