@@ -13,9 +13,8 @@ if [[ -f ~/.vimrc ]]
 then
 	mv ~/.vimrc ~/.vimrc.old
 fi
-git clone https://github.com/AntoineLemarchand/dotfiles /tmp/AntoineLemarchandDotfiles
-cp /tmp/AntoineLemarchandDotfiles/.tmux.conf ~/
-cp /tmp/AntoineLemarchandDotfiles/.vimrc ~/
+cp .tmux.conf ~/
+cp .vimrc ~/
 echo "     ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄     "
 echo "▄█▀▀▀ tmux + vim environment deployed ▀▀▀█▄"
 echo "█     press <C-space> + I inside tmux     █"
