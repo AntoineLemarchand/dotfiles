@@ -1,3 +1,6 @@
+let g:user42 = 'alemarch'
+let g:mail42 = 'alemarch@student.42.fr'
+
 " basics
 set nocompatible
 set encoding=utf-8
@@ -26,6 +29,11 @@ call plug#begin('~/.vim/plugged')
 	Plug 'junegunn/goyo.vim'
 	Plug 'morhetz/gruvbox'
 	Plug 'dusans/vim-hardmode'
+	Plug 'mattn/emmet-vim'
+	Plug 'christoomey/vim-tmux-navigator'
+	Plug 'tmux-plugins/vim-tmux'
+	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+	Plug 'junegunn/fzf.vim'
 call plug#end()
 
 " theme
@@ -39,28 +47,18 @@ hi Normal guibg=NONE ctermbg=NONE
 " mapping
 let mapleader = ' '
 
-" tab management
-nnoremap <leader>n :tabnew .<CR>
-nnoremap <leader>l :tabn<CR>
+" fzf
+nnoremap <leader>f :Files<CR>
+nnoremap <leader>l :Lines<CR>
+nnoremap <leader>b :Buffers<CR>
 
 " split resize
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 nnoremap <Leader>v :e $MYVIMRC<CR>
 
-" escape remap
-inoremap jk <esc>
-inoremap <esc> <Nop>
-
 " file nav
 noremap <leader>^ <C-^>
 
-" disable arrow keys
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
-inoremap <Up> <Nop>
-inoremap <Down> <Nop>
-inoremap <Left> <Nop>
-inoremap <Right> <Nop>
+" backspace
+set backspace=indent,eol,start
