@@ -9,6 +9,10 @@ set background=dark
 
 " better split
 set splitbelow splitright
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 " set indent
 set autoindent
@@ -19,21 +23,33 @@ set noexpandtab
 set smarttab
 set smartindent
 
-" red col at 80
+" col at 80
 set colorcolumn=81
 
 "plugins
 call plug#begin('~/.vim/plugged')
+	" vim status bar
 	Plug 'vim-airline/vim-airline'
-	Plug 'vim-airline/vim-airline-themes'
+	" distraction less writing
 	Plug 'junegunn/goyo.vim'
+	" color theme
 	Plug 'morhetz/gruvbox'
-	Plug 'dusans/vim-hardmode'
+	Plug 'vim-airline/vim-airline-themes'
+	" html autocorrect
 	Plug 'mattn/emmet-vim'
+	" tmux integration
 	Plug 'christoomey/vim-tmux-navigator'
-	Plug 'tmux-plugins/vim-tmux'
+	" tmux terminal integration
+	Plug 'preservim/vimux'
+	" file navigation
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
+	" langage color scheme
+	Plug 'bfrg/vim-cpp-modern'
+	Plug 'rust-lang/rust.vim'
+	Plug 'cespare/vim-toml'
+	" personal knowledge base
+	Plug 'vimwiki/vimwiki'
 call plug#end()
 
 " theme
@@ -52,13 +68,15 @@ nnoremap <leader>f :Files<CR>
 nnoremap <leader>l :Lines<CR>
 nnoremap <leader>b :Buffers<CR>
 
-" split resize
-nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
-nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
-nnoremap <Leader>v :e $MYVIMRC<CR>
+" tmux terminal integration
+nnoremap <leader>vp :VimuxPromptCommand<CR>
+nnoremap <leader>vl :VimuxRunLastCommand<CR>
+nnoremap <Leader>vi :VimuxInspectRunner<CR>
+nnoremap <Leader>vz :VimuxZoomRunner<CR>
 
-" file nav
-noremap <leader>^ <C-^>
+
+" quick config
+nnoremap <Leader>v :e $MYVIMRC<CR>
 
 " backspace
 set backspace=indent,eol,start
