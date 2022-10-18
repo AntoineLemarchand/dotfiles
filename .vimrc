@@ -78,5 +78,8 @@ nnoremap <Leader>vz :VimuxZoomRunner<CR>
 " quick config
 nnoremap <Leader>v :e $MYVIMRC<CR>
 
+" tab switch
+nnoremap <Leader>t :tabnext<CR>
+
 " backspace
 set backspace=indent,eol,start

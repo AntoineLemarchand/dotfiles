@@ -41,13 +41,23 @@ read deploy_vim
 if [ $deploy_tmux = "y" ]; then
 	if [check_dependency curl]; then return 1; fi
 	if [check_dependency git]; then return 1; fi
-	if [check_dependency i3]; then return 1; fi
 	echo "deploying vim config files..."
 
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim;
 	cp .vimrc ~/
 	echo "done, run :PlugInstall to finish"
+else
+	echo "pass"
+fi
+
+echo -n "vim-wiki (y/N) :"
+read deploy_vim
+if [ $deploy_tmux = "y" ]; then
+	if [check_dependency git]; then return 1; fi
+	echo "deploying vim-wiki files..."
+	git clone git@github/antoinelemarchand/wiki.git ~/vimwiki
+	echo "done, open index file with <Leader>ww"
 else
 	echo "pass"
 fi
