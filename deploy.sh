@@ -38,7 +38,7 @@ fi
 
 echo -n "vim (y/N) :"
 read deploy_vim
-if [ $deploy_tmux = "y" ]; then
+if [ $deploy_vim = "y" ]; then
 	if [check_dependency curl]; then return 1; fi
 	if [check_dependency git]; then return 1; fi
 	echo "deploying vim config files..."
@@ -51,9 +51,23 @@ else
 	echo "pass"
 fi
 
+echo -n "neovim (y/N) :"
+read deploy_neovim
+if [ $deploy_neovim = "y" ]; then
+	if [check_dependency wget]; then return 1; fi
+	if [check_dependency git]; then return 1; fi
+	echo "deploying vim config files..."
+
+	wget --quiet https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage --output-document nvim
+	cp init.vim ~/.config/nvim/
+	echo "done, run :PlugInstall to finish"
+else
+	echo "pass"
+fi
+
 echo -n "vim-wiki (y/N) :"
-read deploy_vim
-if [ $deploy_tmux = "y" ]; then
+read deploy_vimwiki
+if [ $deploy_vimwiki = "y" ]; then
 	if [check_dependency git]; then return 1; fi
 	echo "deploying vim-wiki files..."
 	git clone git@github/antoinelemarchand/wiki.git ~/vimwiki
