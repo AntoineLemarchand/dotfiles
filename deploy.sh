@@ -58,9 +58,10 @@ if [ $deploy_neovim = "y" ]; then
 	if [check_dependency git]; then return 1; fi
 	echo "deploying vim config files..."
 
-	wget --quiet https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage --output-document nvim
-	cp init.vim ~/.config/nvim/
-	echo "done, run :PlugInstall to finish"
+	git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+ ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+	cp -rf nvim ~/.config/
+	echo "done, run :PackerInstall to finish"
 else
 	echo "pass"
 fi
