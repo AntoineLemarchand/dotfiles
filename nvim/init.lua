@@ -29,12 +29,14 @@ vim.cmd [[silent! colorscheme gruvbox]]
 require("mappings")
 require("plugin")
 
+require('colorizer').setup()
+
 require("mason").setup()
 require("mason-lspconfig").setup()
 require("mason-lspconfig").setup_handlers {
 	function (server_name) -- default handler (optional)
 		require("lspconfig")[server_name].setup {}
-		end,
+	end,
 }
 
 -- Lualine config
@@ -51,25 +53,32 @@ require('lualine').setup {
 			tabline = 1000,
 			winbar = 1000,
 		}
-		},
-		sections = {
-			lualine_a = {'mode'},
-			lualine_b = {'branch', 'diagnostics'},
-			lualine_c = {'filename'},
-			lualine_x = {'encoding', 'filetype'},
-			lualine_y = {''},
-			lualine_z = {'location'}
-			},
-			inactive_sections = {
-				lualine_a = {},
-				lualine_b = {},
-				lualine_c = {'filename'},
-				lualine_x = {'location'},
-				lualine_y = {},
-				lualine_z = {}
-				},
-				tabline = {},
-				winbar = {},
-				inactive_winbar = {},
-				extensions = {}
+	},
+	sections = {
+		lualine_a = {'mode'},
+		lualine_b = {'branch', 'diagnostics'},
+		lualine_c = {'filename'},
+		lualine_x = {'encoding', 'filetype'},
+		lualine_y = {''},
+		lualine_z = {'location'}
+	},
+	inactive_sections = {
+		lualine_a = {},
+		lualine_b = {},
+		lualine_c = {'filename'},
+		lualine_x = {'location'},
+		lualine_y = {},
+		lualine_z = {}
+	},
+	tabline = {},
+	winbar = {},
+	inactive_winbar = {},
+	extensions = {}
 }
+
+-- vimwiki
+vim.g.vimwiki_list = {{
+	path = '~/vimwiki/wiki',
+	path_html = '~/vimwiki/docs',
+	auto_toc = 1
+}}

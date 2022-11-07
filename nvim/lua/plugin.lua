@@ -16,6 +16,8 @@ return require('packer').startup(function(use)
 	use 'neovim/nvim-lspconfig'
 	-- vim presentation
 	use 'Chaitanyabsprip/present.nvim'
+	-- colorizer
+	use 'norcalli/nvim-colorizer.lua'
 
 	-- VIM SCRIPT ZONE
 	-- html autocorrect
